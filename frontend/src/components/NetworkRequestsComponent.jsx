@@ -122,7 +122,7 @@ function NetworkRequestsComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:8000/capture-requests', { url });
+      const response = await axios.post('https://test-unity-rstk.vercel.app/capture-requests', { url });
       setRequests(response.data);
       console.log(response.data);
     } catch (error) {
