@@ -62,11 +62,7 @@ function NetworkRequestsComponent() {
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState('All');
   const [selectedRequest, setSelectedRequest] = useState(null);
-  const [expandedAccordion, setExpandedAccordion] = useState('panel-0'); // Initialize with 'panel-0' to open the first accordion by default
-
-  const handleAccordionChange = (panel) => (event, isExpanded) => {
-    setExpandedAccordion(isExpanded ? panel : expandedAccordion);
-  };
+ 
   
   useEffect(() => {
     const filterRequests = () => {
@@ -122,7 +118,7 @@ function NetworkRequestsComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('https://testunity-lhmr.onrender.com/capture-requests', { url });
+      const response = await axios.post('http://localhost:8000/requests', { url });
       setRequests(response.data);
       console.log(response.data);
     } catch (error) {
@@ -131,6 +127,7 @@ function NetworkRequestsComponent() {
       setLoading(false);
     }
   };
+  
 
   const handleFilterChange = (filter) => {
     setFilter(filter);
@@ -185,7 +182,7 @@ function NetworkRequestsComponent() {
 </li>
         </ul>
         <div className='input'>
-          <form style={{display:"flex",alignItems:"center"}}onSubmit={handleSubmit}>
+          <form style={{display:"flex",alignItems:"center"}} onSubmit={handleSubmit}>
             <input
               type="text"
               value={url}

@@ -5,19 +5,19 @@ require('dotenv').config();
 const port = process.env.PORT;
 
 const app = express();
-const corsOptions = {
-    origin: 'https://test-unity-xi.vercel.app/',
-    // other options if needed
-};
-
-app.use(cors(corsOptions));
+// app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+  }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send("Server is running!");
 });
 
-app.post('/capture-requests', async (req, res) => {
+app.post('/requests', async (req, res) => {
     const { url } = req.body;
     const result = [];
 
