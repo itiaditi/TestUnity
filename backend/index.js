@@ -5,7 +5,13 @@ require('dotenv').config();
 const port = process.env.PORT;
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: 'https://test-unity-xi.vercel.app/',
+    // other options if needed
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
