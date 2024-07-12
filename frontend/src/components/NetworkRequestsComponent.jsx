@@ -122,7 +122,7 @@ function NetworkRequestsComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('https://test-unity-rstk.vercel.app/capture-requests', { url });
+      const response = await axios.post('https://testunity-lhmr.onrender.com/capture-requests', { url });
       setRequests(response.data);
       console.log(response.data);
     } catch (error) {
@@ -152,7 +152,13 @@ function NetworkRequestsComponent() {
     <div className='main-section'>
       <div className='header'>
         <ul className='menu'>
-        <li style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px" }}><span style={{ margin: "0 8px" }}><LuArrowUpLeftSquare /></span> <span style={{ margin: "0 8px" }}><MdLaptop /></span><span style={{ margin: "0 8px" }}>|</span></li>
+        <li style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "8px" }}>
+  <span style={{ margin: "0 8px" }}><LuArrowUpLeftSquare /></span>
+  <span style={{ margin: "0 8px" }}><MdLaptop /></span>
+  <span>|</span> 
+</li>
+
+
           <li>Elements</li>
           <li>Console</li>
           <li className='active'>Network</li>
@@ -187,10 +193,21 @@ function NetworkRequestsComponent() {
               onKeyPress={handleKeyPress}
               placeholder="Enter URL"
             />
-            <div> <span style={{margin:"0 8px", display:"flex", alignItems:"center"}}><FaRegSquare /> &nbsp; <span>Invert</span><span style={{margin:"0 8px"}}>|</span> <span style={{margin:"0 8px", display:"flex", alignItems:"center"}}><FaRegSquare /> &nbsp; <span>Hide data URLs</span> <span style={{margin:"0 8px", display:"flex", alignItems:"center",margin:"0 8px"}}><FaRegSquare /> &nbsp; <span>Hide extension URLs</span></span>
-        </span>
-        </span>
-            </div>
+<div>
+  <span style={{ margin: "0 8px", display: "flex", alignItems: "center" }}>
+    <FaRegSquare /> &nbsp;
+    <span>Invert</span>
+    <span>|</span> {/* No need for margin here */}
+    <span style={{ display: "flex", alignItems: "center" }}>
+      <FaRegSquare /> &nbsp;
+      <span>Hide data URLs</span>
+      <span style={{ margin: "0 8px" }}>|</span> {/* Properly spaced */}
+      <FaRegSquare /> &nbsp;
+      <span>Hide extension URLs</span>
+    </span>
+  </span>
+</div>
+
              </form>
           <div>
             <button onClick={() => handleFilterChange('All')}>All</button>
