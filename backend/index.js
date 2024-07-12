@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer-core'); // Import puppeteer-core instead of puppeteer
+const puppeteer = require('puppeteer');
 const cors = require('cors');
 require('dotenv').config();
 const port = process.env.PORT;
@@ -11,7 +11,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -22,11 +21,7 @@ app.post('/capture-requests', async (req, res) => {
     const { url } = req.body;
     const result = [];
 
-    // Specify the path to your Chrome executable
-    const browser = await puppeteer.launch({
-        executablePath: '/path/to/chrome', // Update this path with your Chrome executable path
-    });
-
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
