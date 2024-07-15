@@ -1,6 +1,7 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 const port = process.env.PORT;
 
@@ -12,6 +13,13 @@ app.use(cors({
     allowedHeaders: ['Content-Type'],
   }));
 app.use(express.json());
+
+const apiProxy = createProxyMiddleware('/api', {
+    target: `https://testunity-7yn7.onrender.com`,
+    changeOrigin: true,
+});
+
+app.use('/api', apiProxy);
 
 app.get('/', (req, res) => {
     res.send("Server is running!");
