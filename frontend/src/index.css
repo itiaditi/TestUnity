@@ -11,7 +11,11 @@ body {
 .main-section{
   min-height:100vh;
 }
-
+.table-container {
+  max-height: 400px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  margin-bottom: 20px; /* Add some margin at the bottom if needed */
+}
 .menu {
   display: flex;
   align-items: center;
@@ -130,8 +134,8 @@ padding-top: 5px;
 .modal {
   position: fixed;
   top: 28%;
-  left: 28%;
-  width: 78%;
+  left: 31%;
+  width: 74%;
   height: 76%;
   display: flex;
   justify-content: center;
@@ -148,7 +152,7 @@ padding-top: 5px;
   max-width: 80%;
   max-height: 80%;
   overflow: auto;
-  position: relative;
+  position: absolute;
   border: 1px solid #888;
 }
 
