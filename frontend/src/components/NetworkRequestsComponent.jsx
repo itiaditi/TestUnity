@@ -135,7 +135,7 @@ function NetworkRequestsComponent() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://testunity-7yn7.onrender.com/requests",
+        "http://localhost:8000/requests",
         { url }
       );
       setRequests(response.data);

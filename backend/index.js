@@ -7,7 +7,7 @@ const port = process.env.PORT;
 const app = express();
 // app.use(cors());
 app.use(cors({
-    origin: '*',
+    origin: 'https://test-unity-xi.vercel.app/',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
   }));
