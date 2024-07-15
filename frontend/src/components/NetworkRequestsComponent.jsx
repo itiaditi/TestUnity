@@ -135,7 +135,7 @@ function NetworkRequestsComponent() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "/api/requests",
+        "https://testunity-7yn7.onrender.com/requests",
         { url }
       );
       setRequests(response.data);
