@@ -1,7 +1,6 @@
 const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 require('dotenv').config();
 
 const app = express();
@@ -10,7 +9,7 @@ const port = process.env.PORT || 3000;
 // CORS setup
 app.use(cors({
     origin: '*',
-    methods: ['GET', 'POST'],
+    methods: ['GET'],
     allowedHeaders: ['Content-Type'],
 }));
 
@@ -86,13 +85,7 @@ app.post('/requests', async (req, res) => {
     }
 });
 
-// Proxy middleware for /api
-const apiProxy = createProxyMiddleware('/api', {
-    target: `https://test-unity-xi.vercel.app`,
-    changeOrigin: true,
-});
 
-app.use('/api', apiProxy);
 
 // Start the server
 app.listen(port, () => {
