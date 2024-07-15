@@ -14,12 +14,6 @@ app.use(cors({
   }));
 app.use(express.json());
 
-const apiProxy = createProxyMiddleware('/api', {
-    target: `https://testunity-7yn7.onrender.com`,
-    changeOrigin: true,
-});
-
-app.use('/api', apiProxy);
 
 app.get('/', (req, res) => {
     res.send("Server is running!");
@@ -80,6 +74,12 @@ app.post('/requests', async (req, res) => {
 
     res.json(result);
 });
+const apiProxy = createProxyMiddleware('/api', {
+    target: `https://testunity-7yn7.onrender.com`,
+    changeOrigin: true,
+});
+
+app.use('/api', apiProxy);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
